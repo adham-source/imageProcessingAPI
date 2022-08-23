@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
 });
 app.use('/api', routes_1.default);
 app.get('*', function (req, res) {
-    res.status(404).send("This page isn't founding.");
+    res.status(404).send("Oops! This page isn\'t found.");
 });
 app.listen(PORT, function () { return console.info("sever is runing on http://localhost:".concat(PORT)); });
 exports.default = app;

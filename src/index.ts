@@ -12,7 +12,7 @@ app.get('/', (req:Request, res: Response): void => {
 app.use('/api', routes);
 
 app.get('*', (req:Request, res: Response): void =>{
-  res.status(404).send("This page isn't founding.");
+  res.status(404).send("Oops! This page isn\'t found.");
 });
 
 app.listen(PORT, (): void => console.info(`sever is runing on http://localhost:${PORT}`));

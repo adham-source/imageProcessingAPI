@@ -15,7 +15,7 @@ var validateResizeImagesQuery = function (req, res, next) {
     var width = parseInt(req.query.width);
     var height = parseInt(req.query.height);
     if (Object.entries(req.query).length === 0)
-        return res.send('Error! Please process image inot url query adding name, width and height');
+        return res.send('Error! Please process image into url query by adding name, width and height.');
     if (name === undefined || name === '')
         return res.status(400).send('Error! Please write name image.');
     if (!isValidName)

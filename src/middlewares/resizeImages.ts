@@ -12,7 +12,7 @@ const validateResizeImagesQuery = (req: Request, res: Response, next: NextFuncti
   const width: number = parseInt(req.query.width as string);
   const height: number = parseInt(req.query.height as string);
   if (Object.entries(req.query).length === 0)
-    return res.send('Error! Please process image inot url query adding name, width and height');
+    return res.send('Error! Please process image into url query by adding name, width and height.');
   if (name === undefined || name === '') return res.status(400).send('Error! Please write name image.');
   if (!isValidName) return res.status(400).send('This name of image not exist. Write valid name.');
   if (width === undefined || !width) return res.status(400).send('Error! Please write width image and must be number.');
