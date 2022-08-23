@@ -24,13 +24,13 @@ To get started:
 
 `npm run dev`
 
-- and then head to your browser at [a link](http://localhost:5000) and it should be working.
+- and then head to your browser at [a http://localhost:5000](http://localhost:5000) and it should be working.
 
 ##### Runing the program locally in production mode
 
 `npm run start`
 
-- and then head to your browser at [a link](http://localhost:5000) and it should be working.
+- and then head to your browser at [a http://localhost:5000](http://localhost:5000) and it should be working.
 
 ### you can use this api using all of this images
 
@@ -42,16 +42,14 @@ To get started:
 
 
 ### The endpoints that should be accessed to test that you have created the required functionality
-[a link](http://localhost:5000)
 
-[a link](http://localhost:5000/api)
+[a http://localhost:5000](http://localhost:5000)
 
-[a link](http://localhost:5000/api/images)
+[a http://localhost:5000/api](http://localhost:5000/api)
 
-[a link](http://localhost:5000/api/images?name=encenadaport&width=300&height=400)
+[a http://localhost:5000/api/images](http://localhost:5000/api/images)
+
+[a http://localhost:5000/api/images?name=encenadaport&width=300&height=400](http://localhost:5000/api/images?name=encenadaport&width=300&height=400)
 
 
-### Any other functionality you have included in the project to ensure the reviewer knows what to expect
-
-### The reviewer should be able to delete your thumbnail images and see them recreated when accessing the appropriate endpoints, and then see that they are not being recreated when accessing the same endpoint multiple times.
 - You can find the images that you intered in 'assets/images/thumbnail' and you can delete any images after using it in the endpoint.
