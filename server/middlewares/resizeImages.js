@@ -3,15 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var imageNames_1 = __importDefault(require("../utilities/imageNames"));
-var imageNamesAllow = function (name) {
-    if (imageNames_1.default.includes(name))
-        return true;
-    return false;
-};
+var configImage_1 = __importDefault(require("../utilities/configImage"));
 var validateResizeImagesQuery = function (req, res, next) {
     var name = req.query.name;
-    var isValidName = imageNamesAllow(name);
+    var isValidName = configImage_1.default.imageNamesAllow(name);
     var width = parseInt(req.query.width);
     var height = parseInt(req.query.height);
     if (Object.entries(req.query).length === 0)

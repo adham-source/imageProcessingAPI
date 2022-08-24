@@ -39,45 +39,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.configPathImage = void 0;
 var sharp_1 = __importDefault(require("sharp"));
-var path_1 = __importDefault(require("path"));
-var configPathImage = function (name) {
-    var iamgePath = path_1.default.join(__dirname, "../../assets/images/full/".concat(name, ".jpg"));
-    var imageThumb = path_1.default.join(__dirname, "../../assets/images/thumbnail/".concat(name, ".jpg"));
-    return { iamgePath: iamgePath, imageThumb: imageThumb };
-};
-exports.configPathImage = configPathImage;
-var resizeImage = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var name, width, height, _a, iamgePath, imageThumb, _b;
-    return __generator(this, function (_c) {
-        switch (_c.label) {
+var resizeImages = function (input, width, height, output) { return __awaiter(void 0, void 0, void 0, function () {
+    var _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0:
-                name = req.query.name;
-                width = parseInt(req.query.width);
-                height = parseInt(req.query.height);
-                _a = (0, exports.configPathImage)(name), iamgePath = _a.iamgePath, imageThumb = _a.imageThumb;
-                _c.label = 1;
+                _b.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, (0, sharp_1.default)(input).resize(width, height).toFormat('jpeg', { mozjpeg: true }).toFile(output)];
             case 1:
-                _c.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, (0, sharp_1.default)(iamgePath)
-                        .resize({
-                        width: width,
-                        height: height,
-                    })
-                        .toFormat('jpeg', { mozjpeg: true })
-                        .toFile(imageThumb)];
+                _b.sent();
+                return [2 /*return*/, null];
             case 2:
-                _c.sent();
-                res.sendFile(imageThumb);
-                next();
-                return [3 /*break*/, 4];
-            case 3:
-                _b = _c.sent();
-                res.status(400).send('Oops! some wrong in url');
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
+                _a = _b.sent();
+                return [2 /*return*/, 'Image could not be processed. Try agin.'];
+            case 3: return [2 /*return*/];
         }
     });
 }); };
-exports.default = resizeImage;
+exports.default = resizeImages;

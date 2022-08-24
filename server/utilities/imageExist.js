@@ -35,41 +35,23 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var configImage_1 = __importDefault(require("../utilities/configImage"));
-var imageExist_1 = __importDefault(require("../utilities/imageExist"));
-var resizeImages_1 = __importDefault(require("../utilities/resizeImages"));
-var getImageAfterResizing = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var name, width, height, _a, iamgePath, imageThumb, imagePathIsExist, _b;
-    return __generator(this, function (_c) {
-        switch (_c.label) {
+var fs_1 = require("fs");
+var imageExist = function (imageThumbPath) { return __awaiter(void 0, void 0, void 0, function () {
+    var _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0:
-                name = req.query.name;
-                width = parseInt(req.query.width);
-                height = parseInt(req.query.height);
-                _a = configImage_1.default.configPathImage({ name: name, width: width, height: height }), iamgePath = _a.iamgePath, imageThumb = _a.imageThumb;
-                _c.label = 1;
+                _b.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, fs_1.promises.access(imageThumbPath)];
             case 1:
-                _c.trys.push([1, 4, , 5]);
-                return [4 /*yield*/, (0, imageExist_1.default)(imageThumb)];
+                _b.sent();
+                return [2 /*return*/, imageThumbPath];
             case 2:
-                imagePathIsExist = _c.sent();
-                if (imagePathIsExist !== null)
-                    return [2 /*return*/, res.status(409).send("Image (".concat(name, "_").concat(width, "_").concat(height, ") is already exists."))];
-                return [4 /*yield*/, (0, resizeImages_1.default)(iamgePath, width, height, imageThumb)];
-            case 3:
-                _c.sent();
-                res.status(200).sendFile(imageThumb);
-                return [3 /*break*/, 5];
-            case 4:
-                _b = _c.sent();
-                res.status(500).send('Erro! Image could not be processed. Try agin.');
-                return [3 /*break*/, 5];
-            case 5: return [2 /*return*/];
+                _a = _b.sent();
+                return [2 /*return*/, null];
+            case 3: return [2 /*return*/];
         }
     });
 }); };
-exports.default = getImageAfterResizing;
+exports.default = imageExist;

@@ -1,8 +1,7 @@
-import { configPathImage } from "../../utilities/resizeImages";
+import resizeImages from "../../utilities/resizeImages";
 
-describe("Test function in utilities", () => {
-    it("configPathImage(name) must take correct image name to be truthy", () => {
-        const name = "encenadaport"
-        expect(configPathImage(name)).toBeTruthy()
-    })
-})
+describe('Test resize image', () => {
+  it('test resizeImages(output, width, height, input) argument not correct', async () => {
+    expect(await resizeImages('input',200,200, "output")).toEqual("Image could not be processed. Try agin.");
+  });
+});

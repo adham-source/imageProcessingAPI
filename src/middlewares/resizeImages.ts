@@ -1,14 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
-import imageNames from '../utilities/imageNames';
-
-const imageNamesAllow = (name: string): boolean => {
-  if (imageNames.includes(name)) return true;
-  return false;
-};
+import configImage from '../utilities/configImage';
 
 const validateResizeImagesQuery = (req: Request, res: Response, next: NextFunction) => {
   const name: unknown = req.query.name;
-  const isValidName: boolean = imageNamesAllow(name as string);
+  const isValidName: boolean = configImage.imageNamesAllow(name as string);
   const width: number = parseInt(req.query.width as string);
   const height: number = parseInt(req.query.height as string);
   if (Object.entries(req.query).length === 0)

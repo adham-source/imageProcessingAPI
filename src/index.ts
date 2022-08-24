@@ -1,9 +1,11 @@
 import express, { Application, Request, Response } from 'express';
-import path from 'path';
 import routes from './routes';
+import morgan from 'morgan';
 const app:Application = express();
 
 const PORT = 5000;
+
+app.use(morgan("dev"))
 
 app.get('/', (req:Request, res: Response): void => {
   res.send('Hello! There.');

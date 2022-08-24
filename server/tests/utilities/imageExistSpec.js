@@ -39,37 +39,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var configImage_1 = __importDefault(require("../utilities/configImage"));
-var imageExist_1 = __importDefault(require("../utilities/imageExist"));
-var resizeImages_1 = __importDefault(require("../utilities/resizeImages"));
-var getImageAfterResizing = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var name, width, height, _a, iamgePath, imageThumb, imagePathIsExist, _b;
-    return __generator(this, function (_c) {
-        switch (_c.label) {
+var imageExist_1 = __importDefault(require("../../utilities/imageExist"));
+it("imageExist(path) The path of image after resize is exist to be equal null", function () { return __awaiter(void 0, void 0, void 0, function () {
+    var _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0:
-                name = req.query.name;
-                width = parseInt(req.query.width);
-                height = parseInt(req.query.height);
-                _a = configImage_1.default.configPathImage({ name: name, width: width, height: height }), iamgePath = _a.iamgePath, imageThumb = _a.imageThumb;
-                _c.label = 1;
+                _a = expect;
+                return [4 /*yield*/, (0, imageExist_1.default)("path")];
             case 1:
-                _c.trys.push([1, 4, , 5]);
-                return [4 /*yield*/, (0, imageExist_1.default)(imageThumb)];
-            case 2:
-                imagePathIsExist = _c.sent();
-                if (imagePathIsExist !== null)
-                    return [2 /*return*/, res.status(409).send("Image (".concat(name, "_").concat(width, "_").concat(height, ") is already exists."))];
-                return [4 /*yield*/, (0, resizeImages_1.default)(iamgePath, width, height, imageThumb)];
-            case 3:
-                _c.sent();
-                res.status(200).sendFile(imageThumb);
-                return [3 /*break*/, 5];
-            case 4:
-                _b = _c.sent();
-                res.status(500).send('Erro! Image could not be processed. Try agin.');
-                return [3 /*break*/, 5];
-            case 5: return [2 /*return*/];
+                _a.apply(void 0, [_b.sent()]).toEqual(null);
+                return [2 /*return*/];
         }
     });
-}); };
-exports.default = getImageAfterResizing;
+}); });

@@ -43,6 +43,7 @@ var supertest_1 = __importDefault(require("supertest"));
 var index_1 = __importDefault(require("../index"));
 var request = (0, supertest_1.default)(index_1.default);
 describe('Test endpoint responses', function () {
+    var imageNamesAllow = ['encenadaport', 'fjord', 'icelandwaterfall', 'palmtunnel', 'santamonica'];
     it('gets the root endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
         var response;
         return __generator(this, function (_a) {
@@ -63,6 +64,51 @@ describe('Test endpoint responses', function () {
                 case 1:
                     response = _a.sent();
                     expect(response.statusCode).toBe(200);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('test without params', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request.get('/api/images')];
+                case 1:
+                    response = _a.sent();
+                    expect(response.text).toEqual('Error! Please process image into url query by adding name, width and height.');
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('The image name is incorrect', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request.get('/api/images').query({
+                        name: 'hghj',
+                        width: 800,
+                        height: 900,
+                    })];
+                case 1:
+                    response = _a.sent();
+                    expect(response.statusCode).toBe(400);
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    it('Image size of a width not available or equal NAN', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, request.get('/api/images').query({
+                        name: imageNamesAllow[1],
+                        width: 'jljl',
+                        // w: 100,
+                        height: 900,
+                    })];
+                case 1:
+                    response = _a.sent();
+                    expect(response.text).toEqual('Error! Please write width image and must be number.');
                     return [2 /*return*/];
             }
         });
