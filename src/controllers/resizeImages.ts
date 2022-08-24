@@ -10,8 +10,8 @@ const getImageAfterResizing = async (req: Request, res: Response) => {
   const { iamgePath, imageThumb } = configImage.configPathImage({ name, width, height });
   try {
     const imagePathIsExist = await imageExist(imageThumb);
-    if (imagePathIsExist !== null) return res.status(409).send(`Image (${name}_${width}_${height}) is already exists.`);
-    await resizeImages(iamgePath, width, height, imageThumb);
+
+    if (imagePathIsExist === null) await resizeImages(iamgePath, width, height, imageThumb);
     res.status(200).sendFile(imageThumb);
   } catch {
     res.status(500).send('Erro! Image could not be processed. Try agin.');

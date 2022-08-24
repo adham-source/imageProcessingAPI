@@ -53,22 +53,23 @@ var getImageAfterResizing = function (req, res) { return __awaiter(void 0, void 
                 _a = configImage_1.default.configPathImage({ name: name, width: width, height: height }), iamgePath = _a.iamgePath, imageThumb = _a.imageThumb;
                 _c.label = 1;
             case 1:
-                _c.trys.push([1, 4, , 5]);
+                _c.trys.push([1, 5, , 6]);
                 return [4 /*yield*/, (0, imageExist_1.default)(imageThumb)];
             case 2:
                 imagePathIsExist = _c.sent();
-                if (imagePathIsExist !== null)
-                    return [2 /*return*/, res.status(409).send("Image (".concat(name, "_").concat(width, "_").concat(height, ") is already exists."))];
+                if (!(imagePathIsExist === null)) return [3 /*break*/, 4];
                 return [4 /*yield*/, (0, resizeImages_1.default)(iamgePath, width, height, imageThumb)];
             case 3:
                 _c.sent();
-                res.status(200).sendFile(imageThumb);
-                return [3 /*break*/, 5];
+                _c.label = 4;
             case 4:
+                res.status(200).sendFile(imageThumb);
+                return [3 /*break*/, 6];
+            case 5:
                 _b = _c.sent();
                 res.status(500).send('Erro! Image could not be processed. Try agin.');
-                return [3 /*break*/, 5];
-            case 5: return [2 /*return*/];
+                return [3 /*break*/, 6];
+            case 6: return [2 /*return*/];
         }
     });
 }); };
