@@ -34,11 +34,11 @@ To get started:
 
 ### you can use this api using all of this images
 
-• encenadaport.jpg
-• fjord.jpg
-• icelandwaterfall.jpg
-• palmtunnel.jpg
-• santamonica.jpg
+• encenadaport
+• fjord
+• icelandwaterfall
+• palmtunnel
+• santamonica
 
 
 ### The endpoints that should be accessed to test that you have created the required functionality

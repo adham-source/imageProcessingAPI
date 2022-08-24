@@ -8,10 +8,10 @@ describe("Test function in utilities", function () {
     var imageAllowName = ['encenadaport', 'fjord', 'icelandwaterfall', 'palmtunnel', 'santamonica'];
     describe("Test configImage.imageNamesAllow(name)", function () {
         it("configImage.imageNamesAllow(name) The image name must be correct", function () {
-            expect(configImage_1.default.imageNamesAllow(imageAllowName[0])).toEqual(true);
+            expect(configImage_1.default.imageNamesAllow(imageAllowName[2])).toEqual(true);
         });
         it("configImage.imageNamesAllow(name) The image name is incorrect", function () {
-            expect(configImage_1.default.imageNamesAllow("hjkhkl")).toEqual(false);
+            expect(configImage_1.default.imageNamesAllow("hjkhk")).toEqual(false);
         });
     });
 });

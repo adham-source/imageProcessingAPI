@@ -4,11 +4,11 @@ describe("Test function in utilities", () => {
 
     describe("Test configImage.imageNamesAllow(name)", () => {
         it("configImage.imageNamesAllow(name) The image name must be correct", () => {
-            expect(configImage.imageNamesAllow(imageAllowName[0])).toEqual(true)
+            expect(configImage.imageNamesAllow(imageAllowName[2])).toEqual(true)
         })
 
         it("configImage.imageNamesAllow(name) The image name is incorrect", () => {
-            expect(configImage.imageNamesAllow("hjkhkl")).toEqual(false)
+            expect(configImage.imageNamesAllow("hjkhk")).toEqual(false)
         })
     })
 })
